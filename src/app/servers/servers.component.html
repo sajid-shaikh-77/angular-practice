@@ -1,0 +1,42 @@
+<label for="">Server Name</label>
+<!-- <input type="text" class="form-control" (input)="onUpdateServerName($event)" /> -->
+<!-- //event Binding -->
+<input type="text" class="form-control" [(ngModel)]="serverName" />
+<!-- two Way Binding -->
+<!-- <p>{{ serverName }}</p> -->
+
+<button
+  class="btn btn-primary"
+  [disabled]="serverName === ''"
+  (click)="onCeateServer()"
+>
+  Add Server
+</button>
+<!-- <p [innerText]="allowNewServer"></p> -->
+<!-- Property Binding -->
+<!-- <p>{{ allowNewServer }}</p> -->
+<!-- String Interpilation -->
+<!-- <p>{{ serverCeationStatus }}</p> -->
+<p *ngIf="serverCreated; else noServer">
+  Server Was Created ,Server Name is {{ serverName }}
+</p>
+<ng-template #noServer><p>No Server Was Created</p></ng-template>
+<hr />
+<app-server *ngFor="let item of servers"></app-server>
+
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <label for="">User Name</label>
+      <input type="text" class="form-control" [(ngModel)]="userName" />
+      <button
+        class="btn btn-success"
+        [disabled]="userName === ''"
+        (click)="userName = ''"
+      >
+        Add User
+      </button>
+      <p>{{ userName }}</p>
+    </div>
+  </div>
+</div>
